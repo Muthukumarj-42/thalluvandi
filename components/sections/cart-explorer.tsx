@@ -213,6 +213,7 @@ export function CartExplorer({ compact = false }: { compact?: boolean }) {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder={placeholderText}
+              suppressHydrationWarning
               className="w-full h-12 pl-12 pr-10 border border-black/10 focus:border-primary focus:ring-2 focus:ring-primary/40 rounded-xl bg-white text-sm outline-none transition"
             />
             {searchQuery && (
@@ -230,9 +231,10 @@ export function CartExplorer({ compact = false }: { compact?: boolean }) {
         {/* Filter Pills */}
         <div className="hide-scrollbar mt-6 flex gap-3 overflow-x-auto whitespace-nowrap pb-3">
           {filters.map((filter) => (
-            <button
+             <button
               key={filter.en}
               onClick={() => setActiveFilter(filter.en)}
+              suppressHydrationWarning
               className={`min-h-11 shrink-0 rounded-full border px-5 text-xs font-bold uppercase tracking-[0.12em] transition ${
                 activeFilter === filter.en
                   ? "border-primary bg-primary text-white"

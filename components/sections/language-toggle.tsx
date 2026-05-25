@@ -24,6 +24,7 @@ export function LanguageToggle({ compact = false }: { compact?: boolean }) {
     <button
       type="button"
       onClick={toggleLanguage}
+      suppressHydrationWarning
       className={cn(
         "inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-primary/25 bg-white px-4 text-xs font-bold uppercase tracking-[0.12em] text-ink shadow-sm transition hover:border-primary hover:text-primary",
         compact && "min-h-10 px-3 text-[11px]"
