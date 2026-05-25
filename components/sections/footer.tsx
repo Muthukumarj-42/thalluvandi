@@ -26,7 +26,7 @@ const groups = {
 
 export function Footer() {
   return (
-    <footer className="border-t border-[rgba(234,108,0,0.15)] bg-[#fffdf7] pb-24 text-[#1a1208] md:pb-0">
+    <footer className="hidden md:block border-t border-[rgba(234,108,0,0.15)] bg-[#fffdf7] pb-24 text-[#1a1208] md:pb-0">
       <div className="site-container py-16">
         <div className="grid gap-10 lg:grid-cols-[1.1fr_2fr]">
           <div>

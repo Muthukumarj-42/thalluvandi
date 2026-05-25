@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { HeartHandshake, MapPin, Wallet } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { WA_PUBLISH, buildWAUrl } from "@/config/whatsapp";
 
 function Text({ en, ta }: { en: string; ta: string }) {
   return (
@@ -20,8 +21,8 @@ const values = [
 
 export default function AboutPage() {
   return (
-    <main className="bg-[#F8F6F2] pt-0 md:pt-28">
-      <section className="pb-16 pt-12 md:pb-20 md:pt-0">
+    <main className="bg-[#F8F6F2] pt-16 md:pt-28">
+      <section className="pb-16 pt-24 md:pb-20 md:pt-0">
         <div className="site-container grid items-center gap-6 md:grid-cols-2">
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">
@@ -98,13 +99,23 @@ export default function AboutPage() {
               <Text en="Expansion roadmap" ta="அடுத்த பயணம்" />
             </h2>
             <p className="mt-4 max-w-[680px] text-lg leading-8 text-muted">
-              <Text en="Currently in Coimbatore. Expanding across all Tamil Nadu districts by 2027. Want us in your city? Contact us." ta="இப்போ கோவையில். 2027க்குள் தமிழ்நாடு முழுக்க உள்ள அனைத்து மாவட்டங்களுக்கும் விரிவுபடுத்தும் திட்டம் உள்ளது." />
+              <Text 
+                en="Currently in Coimbatore. Expanding across all Tamil Nadu districts by 2027. Want us in your city? Contact us." 
+                ta="இப்போ கோவையில். 2027க்குள் தமிழ்நாடு முழுக்க உள்ள அனைத்து மாவட்டங்களுக்கும் விரிவுபடுத்தும் திட்டம் உள்ளது. உங்கள் ஊரிலும் தள்ளுவண்டி சேவை வேண்டுமா? எங்களை வாட்ஸ்அப்பில் தொடர்பு கொள்ளவும்!" 
+              />
             </p>
-            <Button asChild className="mt-6" size="lg">
-              <Link href="/contact">
-                <Text en="Contact Us" ta="தொடர்பு கொள்ள" />
-              </Link>
-            </Button>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Button asChild className="bg-[#25D366] hover:bg-[#20ba5a] text-white en" size="lg">
+                <a href={buildWAUrl(WA_PUBLISH, "Hi Thalluvandi, I want you to expand to my city!\n\nName:\nPhone:\nCity:\nType of Business:\nComments:")} target="_blank">
+                  Contact Us
+                </a>
+              </Button>
+              <Button asChild className="bg-[#25D366] hover:bg-[#20ba5a] text-white ta tamil-text" size="lg">
+                <a href={buildWAUrl(WA_PUBLISH, "வணக்கம் தள்ளுவண்டி, உங்கள் சேவை எங்கள் ஊரிலும் தேவை!\n\nபெயர்:\nதொலைபேசி:\nஊர்:\nதொழில் வகை:\nகருத்துக்கள்:")} target="_blank">
+                  தொடர்பு கொள்ள
+                </a>
+              </Button>
+            </div>
           </div>
         </div>
       </section>

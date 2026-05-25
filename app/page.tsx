@@ -514,7 +514,7 @@ export default function Home() {
       </section>
 
       {/* Hidden but crawlable SEO text section (CHANGE 8) */}
-      <section className="bg-neutral-50 py-8 border-t border-black/5">
+      <section className="sr-only">
         <div className="site-container">
           <p className="text-xs text-muted-foreground text-center max-w-4xl mx-auto leading-relaxed">
             Thalluvandi offers food cart rentals across Tamil Nadu. Our push

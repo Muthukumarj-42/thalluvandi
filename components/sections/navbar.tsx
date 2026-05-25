@@ -4,9 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { MessageCircle } from "lucide-react";
+import { MessageCircle, PhoneCall } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { rentalTamilMessage } from "@/lib/utils";
+import { CALL_PHONE, rentalTamilMessage } from "@/lib/utils";
 import { LanguageToggle } from "@/components/sections/language-toggle";
 import { WA_NUMBER, buildWAUrl } from "@/config/whatsapp";
 
@@ -33,20 +33,46 @@ export function Navbar() {
   return (
     <>
       {/* Mobile Header (below 768px) */}
-      <header className="fixed inset-x-0 top-0 z-50 flex h-14 items-center justify-center border-b border-black/10 bg-[#F8F6F2] px-4 md:hidden">
-        <Link href="/" className="flex items-center gap-2" aria-label="Thalluvandi home">
-          <Image 
-            src="/brand/full-logo.png" 
-            alt="Thalluvandi food cart rental Tamil Nadu logo" 
-            width={32} 
-            height={32} 
-            className="h-8 w-auto" 
-            priority
-          />
-          <span className="font-display text-2xl font-black uppercase tracking-wide text-ink">
-            THALLUVANDI
-          </span>
-        </Link>
+      <header className="fixed inset-x-0 top-0 z-50 grid grid-cols-[60px_1fr_60px] h-14 items-center border-b border-black/10 bg-[#F8F6F2]/90 backdrop-blur-md px-4 md:hidden">
+        {/* Left: Call action */}
+        <div className="flex justify-start">
+          <a
+            href={`tel:${CALL_PHONE}`}
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-black/5 bg-white/50 text-ink hover:text-primary transition shadow-sm"
+            aria-label="Call Thalluvandi"
+          >
+            <PhoneCall size={15} />
+          </a>
+        </div>
+
+        {/* Center: Brand Logo & Text */}
+        <div className="flex justify-center">
+          <Link href="/" className="flex items-center gap-1.5" aria-label="Thalluvandi home">
+            <Image 
+              src="/brand/full-logo.png" 
+              alt="Thalluvandi food cart rental Tamil Nadu logo" 
+              width={24} 
+              height={24} 
+              className="h-6 w-auto" 
+              priority
+            />
+            <span className="font-display text-lg font-normal uppercase tracking-[0.15em] text-ink">
+              THALLUVANDI
+            </span>
+          </Link>
+        </div>
+
+        {/* Right: WhatsApp action */}
+        <div className="flex justify-end">
+          <a
+            href={buildWAUrl(WA_NUMBER, rentalTamilMessage)}
+            target="_blank"
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-[#25D366]/20 bg-[#25D366]/10 text-[#25D366] hover:bg-[#25D366]/20 transition shadow-sm"
+            aria-label="Chat on WhatsApp"
+          >
+            <MessageCircle size={18} />
+          </a>
+        </div>
       </header>
 
       {/* Desktop Header (768px+) */}

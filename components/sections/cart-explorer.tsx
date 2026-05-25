@@ -117,8 +117,9 @@ export function CartExplorer({ compact = false }: { compact?: boolean }) {
 
   // Mobile slideshow variables (only those with available === true)
   const slideshowCarts = useMemo(() => {
-    return filteredCarts.filter((cart) => cart.available !== false);
-  }, [filteredCarts]);
+    const list = filteredCarts.filter((cart) => cart.available !== false);
+    return compact ? list.slice(0, 3) : list;
+  }, [filteredCarts, compact]);
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const touchStartRef = useRef<number | null>(null);
@@ -244,7 +245,7 @@ export function CartExplorer({ compact = false }: { compact?: boolean }) {
         </div>
 
         {/* Mobile Horizontal Slideshow (compact is false or slideshow rendered on mobile) */}
-        {!compact && slideshowCarts.length > 0 && (
+        {slideshowCarts.length > 0 && (
           <div className="mt-8 block md:hidden relative overflow-hidden w-full">
             {/* Top right counter */}
             <div className="absolute top-2 right-4 z-20 text-[10px] font-bold text-ink bg-white/80 px-2 py-0.5 rounded-full shadow-sm">
@@ -375,7 +376,7 @@ export function CartExplorer({ compact = false }: { compact?: boolean }) {
         )}
 
         {/* Desktop Grid Layout (768px+) & Mobile (if homepage teaser compact) */}
-        <div className={`mt-8 grid items-stretch gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-3 ${!compact ? "hidden md:grid" : "grid"}`}>
+        <div className="mt-8 hidden md:grid items-stretch gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-3">
           {filteredCarts.slice(0, compact ? 3 : filteredCarts.length).map((cart, index) => {
             const isHidden = !cart.available;
 

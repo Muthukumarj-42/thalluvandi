@@ -28,10 +28,10 @@ const inquiryOptions = {
     phone: WA_NUMBER,
   },
   list: {
-    label: "I want to list my cart",
-    tamil: "என் வண்டியை பதிவு செய்ய வேண்டும்",
+    label: "I want to list my cart in thallu vandi",
+    tamil: "என் வண்டியை தளவண்டியில் பதிவு செய்ய வேண்டும்",
     message:
-      "Hi, I want to list my food cart on Thalluvandi.\n\nName:\nPhone:\nNumber of carts:\nCart type:\nRental price expectation:\nLocation (Coimbatore):",
+      "Hi, I want to list my food cart on Thalluvandi.\n\nName:\nPhone:\nNumber of carts:\nCart type:\nRental price expectation:\nLocation (Tamil nadu):",
     phone: WA_PUBLISH,
   },
   buy: {
@@ -81,21 +81,12 @@ export default function ContactPage() {
         {DISPLAY_RENTAL_WHATSAPP}
       </a>,
     ],
-    [
-      Clock,
-      "Business Hours",
-      "அலுவலக நேரம்",
-      <span key="hours-span">
-        <span className="en">Mo-Sa 08:00-20:00</span>
-        <span className="ta tamil-text">திங்கள் – சனி: காலை 8 – இரவு 8</span>
-      </span>,
-    ],
   ] as const;
 
   return (
-    <main className="bg-[#F8F6F2] pt-14 md:pt-28">
+    <main className="bg-[#F8F6F2] pt-16 md:pt-28">
       {/* Page Header */}
-      <section className="pb-12 pt-12 md:pb-16 md:pt-0">
+      <section className="pb-12 pt-24 md:pb-16 md:pt-0">
         <div className="site-container">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">
             <Text en="Contact" ta="தொடர்பு கொள்ள" />
@@ -117,7 +108,7 @@ export default function ContactPage() {
 
       {/* Main Info Cards - FIX 7 */}
       <section className="pb-10">
-        <div className="site-container grid items-stretch gap-4 md:grid-cols-4 md:gap-6">
+        <div className="site-container grid items-stretch gap-4 md:grid-cols-3 md:gap-6">
           {infoCards.map(([Icon, title, tamilTitle, renderContent]) => (
             <div
               key={title}
@@ -186,7 +177,7 @@ export default function ContactPage() {
         <div className="site-container">
           <div className="rounded-2xl border border-black/10 bg-white p-6 shadow-sm">
             <h2 className="font-display text-4xl uppercase leading-none text-ink mb-6">
-              <Text en="WhatsApp Booking" ta="வாட்ஸ்அப் முன்பதிவு" />
+              <Text en="Message us on WhatsApp" ta="வாட்ஸ்அப்பில் தொடர்புகொள்ள" />
             </h2>
 
             {/* Form row containing 2 dropdowns + desktop CTA button */}

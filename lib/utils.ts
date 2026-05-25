@@ -38,9 +38,10 @@ export const customCartMessage = `வணக்கம், நான் தனி�
 பட்ஜெட்:`;
 
 export const publishCartMessage = `Hi, I want to list my food cart on Thalluvandi.
+
 Name:
 Phone:
 Number of carts:
 Cart type:
 Rental price expectation:
-Location:`;
+Location (Tamil nadu):`;
