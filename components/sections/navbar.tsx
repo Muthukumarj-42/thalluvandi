@@ -14,7 +14,7 @@ const nav = [
   ["Home", "முகப்பு", "/"],
   ["Explore", "வண்டிகள்", "/explore"],
   ["How It Works", "எப்படி?", "/how-it-works"],
-  ["Publish Cart", "உங்கள் வண்டியை பதிவு செய்யுங்கள்", "/publish"],
+  ["Publish Cart", "என் வண்டி சேர்க்க", "/publish"],
   ["About", "எங்களைப் பற்றி", "/about"],
   ["Contact", "தொடர்பு", "/contact"]
 ];

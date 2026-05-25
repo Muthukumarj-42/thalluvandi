@@ -8,7 +8,7 @@ import { LanguageToggle } from "@/components/sections/language-toggle";
 const items = [
   ["Home", "முகப்பு", "/", Home],
   ["Explore", "வண்டிகள்", "/explore", Search],
-  ["Publish", "உங்கள் வண்டியை பதிவு செய்யுங்கள்", "/publish", Send],
+  ["Publish", "என் வண்டி சேர்க்க", "/publish", Send],
   ["About", "பற்றி", "/about", UserRound],
   ["Contact", "தொடர்பு", "/contact", Phone]
 ] as const;

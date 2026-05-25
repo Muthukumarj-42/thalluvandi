@@ -9,7 +9,7 @@ const groups = {
     ["Home", "முகப்பு", "/"],
     ["Explore Carts", "வண்டிகளை பாருங்க", "/explore"],
     ["How It Works", "எப்படி rent பண்ணுவது?", "/how-it-works"],
-    ["Publish Cart", "உங்கள் வண்டியை பதிவு செய்யுங்கள்", "/publish"]
+    ["Publish Cart", "என் வண்டி சேர்க்க", "/publish"]
   ],
   Roadmap: [
     ["Currently in Coimbatore", "இப்போ கோவையில்", "/contact"],

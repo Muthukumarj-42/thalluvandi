@@ -41,7 +41,7 @@ export default function PublishPage() {
                 <Text en="Vendor Network" ta="வண்டி உரிமையாளர் நெட்வொர்க்" />
               </p>
               <h1 className="mt-3 font-display text-5xl uppercase leading-none text-ink md:text-7xl">
-                <Text en="Publish Your Cart on Thalluvandi" ta="உங்கள் வண்டியை பதிவு செய்யுங்கள்" />
+                <Text en="Publish Your Cart on Thalluvandi" ta="என் வண்டி சேர்க்க" />
               </h1>
               <p className="mt-6 max-w-[680px] text-lg leading-8 text-muted">
                 <Text en="If you own a food cart and want more rental customers, publish it on Thalluvandi." ta="உங்களுக்கு தள்ளுவண்டி இருந்தால் தள்ளுவண்டி தளத்தில் உங்கள் வண்டியை பதிவு செய்யுங்கள் — வாடிக்கையாளர்களை நாங்க தர்றோம்!" />
@@ -49,7 +49,7 @@ export default function PublishPage() {
             </div>
             <Button asChild size="lg" className="mt-8 bg-[#25D366] hover:bg-[#20ba5a] text-white">
               <a href={buildWAUrl(WA_PUBLISH, publishCartMessage)} target="_blank">
-                <MessageCircle size={18} /> <Text en="📋 List My Cart" ta="📋 உங்கள் வண்டியை பதிவு செய்யுங்கள்" />
+                <MessageCircle size={18} /> <Text en="📋 List My Cart" ta="📋 என் வண்டி சேர்க்க" />
               </a>
             </Button>
           </div>
