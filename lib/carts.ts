@@ -26,7 +26,11 @@ export const carts: Cart[] = [
     availableCount: 3,
     city: ["Coimbatore"],
     featuresEn: ["Has Stove", "Has Roof Cover", "Storage Space"],
-    featuresTa: ["அடுப்பு இருக்கு", "மேல் கவர் இருக்கு", "சேமிப்பு இடம் இருக்கு"],
+    featuresTa: [
+      "அடுப்பு இருக்கு",
+      "மேல் கவர் இருக்கு",
+      "சேமிப்பு இடம் இருக்கு",
+    ],
     images: [
       "/carts/premium-fast-food-cart-with-stove/photo-1.jpg",
       "/carts/premium-fast-food-cart-with-stove/photo-2.jpg",
@@ -70,7 +74,11 @@ export const carts: Cart[] = [
     availableCount: 0,
     city: ["Coimbatore"],
     featuresEn: ["Fruit Display Space", "Has Roof Cover", "Easy to Clean"],
-    featuresTa: ["பழம் வைக்க இடம்", "மேல் கவர் இருக்கு", "சுத்தம் செய்ய சுலபம்"],
+    featuresTa: [
+      "பழம் வைக்க இடம்",
+      "மேல் கவர் இருக்கு",
+      "சுத்தம் செய்ய சுலபம்",
+    ],
     images: [
       "/carts/juice-cart/photo-1.jpg",
       "/carts/juice-cart/photo-2.jpg",
@@ -122,6 +130,26 @@ export const carts: Cart[] = [
   {
     id: "mobile-snack-cart",
     nameEn: "Mobile Snack Cart",
+    nameTa: "சாதாரண வண்டி",
+    type: ["Fast Food", "No Stove", "Compact"],
+    pricePerDay: 150,
+    depositAmount: 2000,
+    available: true,
+    availableCount: 3,
+    city: ["Coimbatore"],
+    featuresEn: ["Snack Display Box", "Cash Drawer Space", "Easy to Move"],
+    featuresTa: ["ஸ்நாக்ஸ் வைக்க இடம்", "கேஷ் வைக்க இடம்", "நகர்த்த சுலபம்"],
+    images: [
+      "/carts/mobile-snack-cart/photo-1.jpg",
+      "/carts/mobile-snack-cart/photo-2.jpg",
+      "/carts/mobile-snack-cart/photo-3.jpg",
+    ],
+    whatsappMessageTa:
+      "வணக்கம், நான் சாதாரண வண்டி வாடகைக்கு எடுக்க விரும்புகிறேன்.",
+  },
+  {
+    id: "pudhu-vandi",
+    nameEn: "avalotha ",
     nameTa: "சாதாரண வண்டி",
     type: ["Fast Food", "No Stove", "Compact"],
     pricePerDay: 150,
