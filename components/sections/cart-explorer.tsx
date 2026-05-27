@@ -3,7 +3,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState, useEffect, useRef, useCallback } from "react";
-import { MapPin, MessageCircle, Sparkles, Search as SearchIcon, X } from "lucide-react";
+import {
+  MapPin,
+  MessageCircle,
+  Sparkles,
+  Search as SearchIcon,
+  X,
+} from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { carts, filters, type Cart } from "@/lib/carts";
@@ -54,11 +60,13 @@ export function CartExplorer({ compact = false }: { compact?: boolean }) {
 
   // Sync React language state dynamically with DOM mutations (data-lang toggle) - FIX 4
   useEffect(() => {
-    const currentLang = document.documentElement.dataset.lang === "ta" ? "ta" : "en";
+    const currentLang =
+      document.documentElement.dataset.lang === "ta" ? "ta" : "en";
     setLang(currentLang);
 
     const observer = new MutationObserver(() => {
-      const updatedLang = document.documentElement.dataset.lang === "ta" ? "ta" : "en";
+      const updatedLang =
+        document.documentElement.dataset.lang === "ta" ? "ta" : "en";
       setLang(updatedLang);
     });
 
@@ -132,9 +140,9 @@ export function CartExplorer({ compact = false }: { compact?: boolean }) {
     timerRef.current = setInterval(() => {
       const timeSinceLastAction = Date.now() - lastActiveRef.current;
       if (timeSinceLastAction < 6000) return; // delay after manual swipes
-      
-      setCurrentIndex((prev) => 
-        slideshowCarts.length > 0 ? (prev + 1) % slideshowCarts.length : 0
+
+      setCurrentIndex((prev) =>
+        slideshowCarts.length > 0 ? (prev + 1) % slideshowCarts.length : 0,
       );
     }, 4000);
   }, [slideshowCarts.length]);
@@ -166,14 +174,17 @@ export function CartExplorer({ compact = false }: { compact?: boolean }) {
         setCurrentIndex((prev) => (prev + 1) % slideshowCarts.length);
       } else {
         // swipe right -> prev
-        setCurrentIndex((prev) => (prev - 1 + slideshowCarts.length) % slideshowCarts.length);
+        setCurrentIndex(
+          (prev) => (prev - 1 + slideshowCarts.length) % slideshowCarts.length,
+        );
       }
     }
   };
 
-  const placeholderText = lang === "ta"
-    ? "வாடகை, வண்டி வகை தேடுங்கள்... (எ.கா: stove, 200, juice)"
-    : "Search by cart type, rent (eg: stove, 200, juice)...";
+  const placeholderText =
+    lang === "ta"
+      ? "வாடகை, வண்டி வகை தேடுங்கள்... (எ.கா: stove, 200, juice)"
+      : "Search by cart type, rent (eg: stove, 200, juice)...";
 
   return (
     <section id="explore" className="bg-[#F8F6F2] py-16 md:py-24">
@@ -186,11 +197,14 @@ export function CartExplorer({ compact = false }: { compact?: boolean }) {
             </p>
             {compact ? (
               <h2 className="mt-3 font-display text-5xl uppercase leading-none text-ink md:text-7xl">
-                <Text en="Our Cart Variants" ta="உணவு வண்டி வகைகள்" />
+                <Text en="Our Cart Variants" ta="எங்கள் வண்டி வகைகள்" />
               </h2>
             ) : (
               <h1 className="mt-3 font-display text-5xl uppercase leading-none text-ink md:text-7xl">
-                <Text en="Rent a Food Cart in Coimbatore" ta="கோயம்புத்தூரில் தள்ளுவண்டி வாடகை" />
+                <Text
+                  en="Rent a Food Cart in Coimbatore"
+                  ta="கோயம்புத்தூரில் தள்ளுவண்டி வாடகை"
+                />
               </h1>
             )}
           </div>
@@ -231,7 +245,7 @@ export function CartExplorer({ compact = false }: { compact?: boolean }) {
         {/* Filter Pills */}
         <div className="hide-scrollbar mt-6 flex gap-3 overflow-x-auto whitespace-nowrap pb-3">
           {filters.map((filter) => (
-             <button
+            <button
               key={filter.en}
               onClick={() => setActiveFilter(filter.en)}
               suppressHydrationWarning
@@ -254,8 +268,8 @@ export function CartExplorer({ compact = false }: { compact?: boolean }) {
               {currentIndex + 1} / {slideshowCarts.length}
             </div>
 
-            <div 
-              className="flex transition-transform duration-350 ease-in-out" 
+            <div
+              className="flex transition-transform duration-350 ease-in-out"
               style={{ transform: `translateX(-${currentIndex * 100}%)` }}
               onTouchStart={handleTouchStart}
               onTouchEnd={handleTouchEnd}
@@ -266,23 +280,34 @@ export function CartExplorer({ compact = false }: { compact?: boolean }) {
                     {/* Aspect Ratio 16:9 Image Area - FIX 8 */}
                     <div className="relative aspect-video w-full overflow-hidden">
                       <CartImage src={cart.images[0]} alt={cart.nameEn} />
-                      
+
                       {/* Availability badge - z-10 */}
-                      <span className={`absolute top-2 left-2 z-10 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-widest ${
-                        cart.availableCount >= 2 ? "bg-green-500 text-white" :
-                        cart.availableCount === 1 ? "bg-amber-400 text-black" :
-                        "bg-red-500 text-white"
-                      }`}>
-                        {cart.availableCount >= 2 ? "AVAILABLE" :
-                         cart.availableCount === 1 ? "LIMITED" : "BOOKED"}
+                      <span
+                        className={`absolute top-2 left-2 z-10 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-widest ${
+                          cart.availableCount >= 2
+                            ? "bg-green-500 text-white"
+                            : cart.availableCount === 1
+                              ? "bg-amber-400 text-black"
+                              : "bg-red-500 text-white"
+                        }`}
+                      >
+                        {cart.availableCount >= 2
+                          ? "AVAILABLE"
+                          : cart.availableCount === 1
+                            ? "LIMITED"
+                            : "BOOKED"}
                       </span>
 
                       {/* Count text below badge - z-10 top-9 */}
                       <span className="absolute top-9 left-2 z-10 bg-white/95 px-2 py-0.5 rounded-full shadow-sm text-[10px] font-bold text-ink">
                         {cart.availableCount >= 2 ? (
                           <>
-                            <span className="en">{cart.availableCount} Carts</span>
-                            <span className="ta tamil-text">{cart.availableCount} வண்டிகள் உள்ளன</span>
+                            <span className="en">
+                              {cart.availableCount} Carts
+                            </span>
+                            <span className="ta tamil-text">
+                              {cart.availableCount} வண்டிகள் உள்ளன
+                            </span>
                           </>
                         ) : cart.availableCount === 1 ? (
                           <>
@@ -301,7 +326,10 @@ export function CartExplorer({ compact = false }: { compact?: boolean }) {
                     <div className="p-5">
                       <h3 className="font-display text-2xl uppercase leading-tight text-ink">
                         <span className="en">{cart.nameEn}</span>
-                        <span className="ta tamil-text line-clamp-2 overflow-hidden text-ellipsis normal-case whitespace-normal leading-tight" title={cart.nameTa}>
+                        <span
+                          className="ta tamil-text line-clamp-2 overflow-hidden text-ellipsis normal-case whitespace-normal leading-tight"
+                          title={cart.nameTa}
+                        >
                           {cart.nameTa}
                         </span>
                       </h3>
@@ -309,8 +337,8 @@ export function CartExplorer({ compact = false }: { compact?: boolean }) {
                       {/* Features wrapper truncation */}
                       <div className="mt-2 flex flex-wrap gap-1 max-w-full">
                         {cart.type.map((tag) => (
-                          <span 
-                            key={tag} 
+                          <span
+                            key={tag}
                             title={tag}
                             className="truncate max-w-[140px] rounded-full bg-[#F8F6F2] px-2.5 py-0.5 text-[9px] font-bold uppercase tracking-wider text-muted"
                           >
@@ -326,27 +354,44 @@ export function CartExplorer({ compact = false }: { compact?: boolean }) {
                             <span className="en">RENT</span>
                             <span className="ta tamil-text">வாடகை</span>
                           </p>
-                          <p className="font-display text-xl font-bold text-foreground">₹{cart.pricePerDay}/DAY</p>
+                          <p className="font-display text-xl font-bold text-foreground">
+                            ₹{cart.pricePerDay}/DAY
+                          </p>
                         </div>
                         <div className="bg-orange-50/50 border border-orange-500/10 rounded-lg p-2.5">
                           <p className="text-[9px] uppercase tracking-widest text-muted-foreground font-semibold">
                             <span className="en">DEPOSIT</span>
                             <span className="ta tamil-text">முன்பணம்</span>
                           </p>
-                          <p className="font-display text-xl font-bold text-foreground">₹{cart.depositAmount}</p>
+                          <p className="font-display text-xl font-bold text-foreground">
+                            ₹{cart.depositAmount}
+                          </p>
                         </div>
                       </div>
 
                       {/* Details & WhatsApp buttons */}
                       <div className="mt-5 grid grid-cols-2 gap-3">
-                        <Button asChild variant="outline" className="border-black/20 text-ink text-xs h-10">
+                        <Button
+                          asChild
+                          variant="outline"
+                          className="border-black/20 text-ink text-xs h-10"
+                        >
                           <Link href={`/carts/${cart.id}`}>
                             <span className="en">DETAILS</span>
                             <span className="ta tamil-text">விவரம்</span>
                           </Link>
                         </Button>
-                        <Button asChild className="bg-[#25D366] hover:bg-[#20ba5a] text-white text-xs h-10">
-                          <a href={buildWAUrl(WA_NUMBER, `வணக்கம், நான் ${cart.nameTa} வாடகைக்கு எடுக்க விரும்புகிறேன்.\n\nபெயர்:\nதொலைபேசி:\nதேவையான தேதி:\nஇடம் (கோவையில்):\nகால அவகாசம்:\nமேலும் விவரம்:`)} target="_blank">
+                        <Button
+                          asChild
+                          className="bg-[#25D366] hover:bg-[#20ba5a] text-white text-xs h-10"
+                        >
+                          <a
+                            href={buildWAUrl(
+                              WA_NUMBER,
+                              `வணக்கம், நான் ${cart.nameTa} வாடகைக்கு எடுக்க விரும்புகிறேன்.\n\nபெயர்:\nதொலைபேசி:\nதேவையான தேதி:\nஇடம் (கோவையில்):\nகால அவகாசம்:\nமேலும் விவரம்:`,
+                            )}
+                            target="_blank"
+                          >
                             <span className="en">BOOK CART</span>
                             <span className="ta tamil-text">புக் செய்ய</span>
                           </a>
@@ -379,135 +424,173 @@ export function CartExplorer({ compact = false }: { compact?: boolean }) {
 
         {/* Desktop Grid Layout (768px+) & Mobile (if homepage teaser compact) */}
         <div className="mt-8 hidden md:grid items-stretch gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-3">
-          {filteredCarts.slice(0, compact ? 3 : filteredCarts.length).map((cart, index) => {
-            const isHidden = !cart.available;
+          {filteredCarts
+            .slice(0, compact ? 3 : filteredCarts.length)
+            .map((cart, index) => {
+              const isHidden = !cart.available;
 
-            return (
-              <motion.article
-                layout
-                key={cart.id}
-                initial={{ y: 24, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ delay: index * 0.04, duration: 0.45 }}
-                className={`grain group flex flex-col overflow-hidden rounded-xl border border-black/10 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-premium min-w-[280px] ${
-                  isHidden ? "hidden" : "flex"
-                }`}
-              >
-                {/* 16:9 Aspect Video Area - FIX 8 */}
-                <Link href={`/carts/${cart.id}`} className="block relative aspect-video overflow-hidden bg-[#fff7ed] z-0">
-                  <CartImage src={cart.images[0]} alt={cart.nameEn} />
+              return (
+                <motion.article
+                  layout
+                  key={cart.id}
+                  initial={{ y: 24, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ delay: index * 0.04, duration: 0.45 }}
+                  className={`grain group flex flex-col overflow-hidden rounded-xl border border-black/10 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-premium min-w-[280px] ${
+                    isHidden ? "hidden" : "flex"
+                  }`}
+                >
+                  {/* 16:9 Aspect Video Area - FIX 8 */}
+                  <Link
+                    href={`/carts/${cart.id}`}
+                    className="block relative aspect-video overflow-hidden bg-[#fff7ed] z-0"
+                  >
+                    <CartImage src={cart.images[0]} alt={cart.nameEn} />
 
-                  {/* Absolute badges - z-10 */}
-                  <span className={`absolute top-2 left-2 z-10 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-widest ${
-                    cart.availableCount >= 2 ? "bg-green-500 text-white" :
-                    cart.availableCount === 1 ? "bg-amber-400 text-black" :
-                    "bg-red-500 text-white"
-                  }`}>
-                    {cart.availableCount >= 2 ? "AVAILABLE" :
-                     cart.availableCount === 1 ? "LIMITED" : "BOOKED"}
-                  </span>
+                    {/* Absolute badges - z-10 */}
+                    <span
+                      className={`absolute top-2 left-2 z-10 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-widest ${
+                        cart.availableCount >= 2
+                          ? "bg-green-500 text-white"
+                          : cart.availableCount === 1
+                            ? "bg-amber-400 text-black"
+                            : "bg-red-500 text-white"
+                      }`}
+                    >
+                      {cart.availableCount >= 2
+                        ? "AVAILABLE"
+                        : cart.availableCount === 1
+                          ? "LIMITED"
+                          : "BOOKED"}
+                    </span>
 
-                  {/* Count text absolute positioned below badge - z-10 top-9 */}
-                  <span className="absolute top-9 left-2 z-10 bg-white/95 px-2 py-0.5 rounded-full shadow-sm text-[10px] font-bold text-ink">
-                    {cart.availableCount >= 2 ? (
-                      <>
-                        <span className="en">{cart.availableCount} Carts</span>
-                        <span className="ta tamil-text">{cart.availableCount} வண்டிகள் உள்ளன</span>
-                      </>
-                    ) : cart.availableCount === 1 ? (
-                      <>
-                        <span className="en">Last 1 Cart</span>
-                        <span className="ta tamil-text">கடைசி 1 வண்டி</span>
-                      </>
-                    ) : (
-                      <>
-                        <span className="en">Sold Out</span>
-                        <span className="ta tamil-text">தற்போது இல்லை</span>
-                      </>
-                    )}
-                  </span>
+                    {/* Count text absolute positioned below badge - z-10 top-9 */}
+                    <span className="absolute top-9 left-2 z-10 bg-white/95 px-2 py-0.5 rounded-full shadow-sm text-[10px] font-bold text-ink">
+                      {cart.availableCount >= 2 ? (
+                        <>
+                          <span className="en">
+                            {cart.availableCount} Carts
+                          </span>
+                          <span className="ta tamil-text">
+                            {cart.availableCount} வண்டிகள் உள்ளன
+                          </span>
+                        </>
+                      ) : cart.availableCount === 1 ? (
+                        <>
+                          <span className="en">Last 1 Cart</span>
+                          <span className="ta tamil-text">கடைசி 1 வண்டி</span>
+                        </>
+                      ) : (
+                        <>
+                          <span className="en">Sold Out</span>
+                          <span className="ta tamil-text">தற்போது இல்லை</span>
+                        </>
+                      )}
+                    </span>
 
-                  {/* Location badge bottom-2 left-2 - z-10 */}
-                  <span className="absolute bottom-2 left-2 z-10 flex items-center gap-1 rounded-full bg-white/95 px-3 py-1 text-xs font-bold text-ink shadow-sm">
-                    <MapPin size={13} /> <Text en="Coimbatore" ta="கோவை" />
-                  </span>
-                </Link>
+                    {/* Location badge bottom-2 left-2 - z-10 */}
+                    <span className="absolute bottom-2 left-2 z-10 flex items-center gap-1 rounded-full bg-white/95 px-3 py-1 text-xs font-bold text-ink shadow-sm">
+                      <MapPin size={13} /> <Text en="Coimbatore" ta="கோவை" />
+                    </span>
+                  </Link>
 
-                <div className="flex flex-1 flex-col p-5">
-                  <div className="flex items-start justify-between gap-4">
-                    <div>
-                      <h3 className="font-display text-3xl uppercase leading-tight text-ink">
-                        <span className="en">{cart.nameEn}</span>
-                        <span className="ta tamil-text line-clamp-2 overflow-hidden text-ellipsis normal-case whitespace-normal leading-tight" title={cart.nameTa}>
-                          {cart.nameTa}
+                  <div className="flex flex-1 flex-col p-5">
+                    <div className="flex items-start justify-between gap-4">
+                      <div>
+                        <h3 className="font-display text-3xl uppercase leading-tight text-ink">
+                          <span className="en">{cart.nameEn}</span>
+                          <span
+                            className="ta tamil-text line-clamp-2 overflow-hidden text-ellipsis normal-case whitespace-normal leading-tight"
+                            title={cart.nameTa}
+                          >
+                            {cart.nameTa}
+                          </span>
+                        </h3>
+                        <p className="mt-1 text-sm text-muted">
+                          <span className="en">Rent Carts</span>
+                          <span className="ta tamil-text">வாடகை வண்டி</span>
+                        </p>
+                      </div>
+                      <Sparkles className="shrink-0 text-primary" size={20} />
+                    </div>
+
+                    {/* Tag wrapper constraints - flex-wrap gap-1 max-w-full - FIX 3 */}
+                    <div className="mt-4 flex flex-wrap gap-1 max-w-full">
+                      {cart.type.map((tag) => (
+                        <span
+                          key={tag}
+                          title={tag}
+                          className="truncate max-w-[140px] rounded-full bg-[#F8F6F2] px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-muted"
+                        >
+                          {tag}
                         </span>
-                      </h3>
-                      <p className="mt-1 text-sm text-muted">
-                        <span className="en">Rent Carts</span>
-                        <span className="ta tamil-text">வாடகை வண்டி</span>
-                      </p>
+                      ))}
                     </div>
-                    <Sparkles className="shrink-0 text-primary" size={20} />
-                  </div>
 
-                  {/* Tag wrapper constraints - flex-wrap gap-1 max-w-full - FIX 3 */}
-                  <div className="mt-4 flex flex-wrap gap-1 max-w-full">
-                    {cart.type.map((tag) => (
-                      <span 
-                        key={tag} 
-                        title={tag}
-                        className="truncate max-w-[140px] rounded-full bg-[#F8F6F2] px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-muted"
+                    {/* Price info card container */}
+                    <div className="mt-5 rounded-lg border border-black/10 bg-[#F8F6F2] p-4 grid grid-cols-2 gap-2">
+                      <div>
+                        <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-muted">
+                          <span className="en">Daily Price</span>
+                          <span className="ta tamil-text">ஒரு நாள் வாடகை</span>
+                        </p>
+                        <p className="mt-1 font-display text-3xl text-ink">
+                          ₹{cart.pricePerDay}
+                        </p>
+                      </div>
+                      <div>
+                        <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-muted">
+                          <span className="en">Deposit</span>
+                          <span className="ta tamil-text">முன்பணம்</span>
+                        </p>
+                        <p className="mt-1 font-display text-3xl text-ink">
+                          ₹{cart.depositAmount}
+                        </p>
+                      </div>
+                    </div>
+
+                    <ul className="mt-5 space-y-2 text-sm text-muted flex-1">
+                      {(lang === "ta" ? cart.featuresTa : cart.featuresEn)
+                        .slice(0, 3)
+                        .map((feature, idx) => (
+                          <li key={idx} className="flex gap-2">
+                            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                            <span className={lang === "ta" ? "tamil-text" : ""}>
+                              {feature}
+                            </span>
+                          </li>
+                        ))}
+                    </ul>
+
+                    <div className="mt-6 grid grid-cols-2 gap-3 pt-4 border-t border-black/5">
+                      <Button asChild variant="dark">
+                        <Link href={`/carts/${cart.id}`}>
+                          <span className="en">Details</span>
+                          <span className="ta tamil-text">விவரம்</span>
+                        </Link>
+                      </Button>
+                      <Button
+                        asChild
+                        className="bg-[#25D366] hover:bg-[#20ba5a] text-white"
                       >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Price info card container */}
-                  <div className="mt-5 rounded-lg border border-black/10 bg-[#F8F6F2] p-4 grid grid-cols-2 gap-2">
-                    <div>
-                      <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-muted">
-                        <span className="en">Daily Price</span>
-                        <span className="ta tamil-text">ஒரு நாள் வாடகை</span>
-                      </p>
-                      <p className="mt-1 font-display text-3xl text-ink">₹{cart.pricePerDay}</p>
-                    </div>
-                    <div>
-                      <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-muted">
-                        <span className="en">Deposit</span>
-                        <span className="ta tamil-text">முன்பணம்</span>
-                      </p>
-                      <p className="mt-1 font-display text-3xl text-ink">₹{cart.depositAmount}</p>
+                        <a
+                          href={buildWAUrl(
+                            WA_NUMBER,
+                            `வணக்கம், நான் ${cart.nameTa} வாடகைக்கு எடுக்க விரும்புகிறேன்.\n\nபெயர்:\nதொலைபேசி:\nதேவையான தேதி:\nஇடம் (கோவையில்):\nகால அவகாசம்:\nமேலும் விவரம்:`,
+                          )}
+                          target="_blank"
+                        >
+                          <MessageCircle size={16} />{" "}
+                          <span className="en">Book</span>
+                          <span className="ta tamil-text">முன்பதிவு</span>
+                        </a>
+                      </Button>
                     </div>
                   </div>
-
-                  <ul className="mt-5 space-y-2 text-sm text-muted flex-1">
-                    {(lang === "ta" ? cart.featuresTa : cart.featuresEn).slice(0, 3).map((feature, idx) => (
-                      <li key={idx} className="flex gap-2">
-                        <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                        <span className={lang === "ta" ? "tamil-text" : ""}>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="mt-6 grid grid-cols-2 gap-3 pt-4 border-t border-black/5">
-                    <Button asChild variant="dark">
-                      <Link href={`/carts/${cart.id}`}>
-                        <span className="en">Details</span>
-                        <span className="ta tamil-text">விவரம்</span>
-                      </Link>
-                    </Button>
-                    <Button asChild className="bg-[#25D366] hover:bg-[#20ba5a] text-white">
-                      <a href={buildWAUrl(WA_NUMBER, `வணக்கம், நான் ${cart.nameTa} வாடகைக்கு எடுக்க விரும்புகிறேன்.\n\nபெயர்:\nதொலைபேசி:\nதேவையான தேதி:\nஇடம் (கோவையில்):\nகால அவகாசம்:\nமேலும் விவரம்:`)} target="_blank">
-                        <MessageCircle size={16} /> <span className="en">Book</span><span className="ta tamil-text">முன்பதிவு</span>
-                      </a>
-                    </Button>
-                  </div>
-                </div>
-              </motion.article>
-            );
-          })}
+                </motion.article>
+              );
+            })}
         </div>
 
         {compact && (

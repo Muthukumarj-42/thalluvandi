@@ -28,17 +28,11 @@ function Text({ en, ta }: { en: string; ta: string }) {
   );
 }
 
-const stats = [
-  ["60+ Carts", "60+ வண்டிகள்"],
-  ["Coimbatore", "கோவை"],
-  ["4 Types", "4 வகைகள்"],
-  ["Same-Day Booking", "அன்றே புக்கிங்"],
-];
+const stats: any[] = [];
 
 const marquee = [
-  ["HAS STOVE", "அடுப்பு வண்டி"],
-  ["NO STOVE", "அடுப்பு இல்லாத வண்டி"],
-  ["HAS ROOF", "மேல் கவர் வண்டி"],
+  ["60+ Carts", "60+ வண்டிகள்"],
+  ["Coimbatore", "கோவை"],
   ["PREMIUM CARTS", "பிரீமியம் வண்டி"],
   ["SAME DAY BOOKING", "அன்றே புக்கிங்"],
   ["EXPANDING ACROSS TAMIL NADU", "தமிழ்நாடு முழுக்க விரைவில்"],
@@ -176,13 +170,13 @@ export default function Home() {
             <h1 className="mt-5 max-w-4xl font-display text-5xl uppercase leading-none md:text-7xl lg:text-8xl">
               <Text
                 en="Food Cart Rentals in Coimbatore | Thalluvandi"
-                ta="உங்கள் தொழில் இனி தொடங்கட்டும் — வண்டி நாங்க தருவோம்!"
+                ta="உங்கள் தொழில் இனி தொடங்கட்டும் — வாடகை வண்டி நாங்க தருவோம்!"
               />
             </h1>
             <p className="mx-auto mt-6 max-w-xl text-base leading-7 text-muted md:mx-0 md:text-lg md:leading-8">
               <Text
                 en="Start your food business in Coimbatore without heavy investment."
-                ta="அதிக முதலீடு இல்லாமல், கோவையில் உங்கள் உணவு வியாபாரம் ஆரம்பியுங்கள்."
+                ta="அதிக முதலீடு இல்லாமல், கோவையில் உங்கள் தொழில் ஆரம்பியுங்கள்."
               />
             </p>
             <div className="mt-8 grid gap-3 sm:flex md:justify-start">
@@ -331,7 +325,7 @@ export default function Home() {
                   <span className="ta tamil-text">மதிப்பிடப்பட்ட விலை</span>
                 </p>
                 <p className="mt-1 font-display text-3xl font-bold text-ink">
-                  ₹30,000 – ₹70,000
+                  ₹30,000 – ₹70,000+
                 </p>
               </div>
 

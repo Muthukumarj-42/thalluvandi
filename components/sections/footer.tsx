@@ -1,7 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Instagram, Linkedin, Mail, Phone } from "lucide-react";
-import { DISPLAY_CALL_PHONE, DISPLAY_RENTAL_WHATSAPP, rentalTamilMessage } from "@/lib/utils";
+import {
+  DISPLAY_CALL_PHONE,
+  DISPLAY_RENTAL_WHATSAPP,
+  rentalTamilMessage,
+} from "@/lib/utils";
 import { WA_NUMBER, buildWAUrl } from "@/config/whatsapp";
 
 const groups = {
@@ -9,19 +13,27 @@ const groups = {
     ["Home", "முகப்பு", "/"],
     ["Explore Carts", "வண்டிகளை பாருங்க", "/explore"],
     ["How It Works", "எப்படி rent பண்ணுவது?", "/how-it-works"],
-    ["Publish Cart", "என் வண்டி சேர்க்க", "/publish"]
+    ["Publish Cart", "என் வண்டி சேர்க்க", "/publish"],
   ],
   Roadmap: [
     ["Currently in Coimbatore", "இப்போ கோவையில்", "/contact"],
     ["Expanding across Tamil Nadu", "தமிழ்நாடு முழுக்க விரைவில்", "/contact"],
     ["Vendor Dashboard", "Vendor dashboard", "/marketplace"],
-    ["Booking System", "Booking system", "/marketplace"]
+    ["Booking System", "Booking system", "/marketplace"],
   ],
   Contact: [
     [DISPLAY_CALL_PHONE, DISPLAY_CALL_PHONE, "tel:+919442763940"],
-    [DISPLAY_RENTAL_WHATSAPP, DISPLAY_RENTAL_WHATSAPP, buildWAUrl(WA_NUMBER, rentalTamilMessage)],
-    ["hello@thalluvandi.in", "hello@thalluvandi.in", "mailto:hello@thalluvandi.in"]
-  ]
+    [
+      DISPLAY_RENTAL_WHATSAPP,
+      DISPLAY_RENTAL_WHATSAPP,
+      buildWAUrl(WA_NUMBER, rentalTamilMessage),
+    ],
+    [
+      "hello@thalluvandi.in",
+      "hello@thalluvandi.in",
+      "mailto:hello@thalluvandi.in",
+    ],
+  ],
 };
 
 export function Footer() {
@@ -30,14 +42,29 @@ export function Footer() {
       <div className="site-container py-16">
         <div className="grid gap-10 lg:grid-cols-[1.1fr_2fr]">
           <div>
-            <Image src="/brand/full-logo-with-background.png" alt="Thalluvandi food cart rental Tamil Nadu logo" width={168} height={82} className="h-20 w-auto transition hover:scale-105" />
+            <Image
+              src="/brand/full-logo-with-background.png"
+              alt="Thalluvandi food cart rental Tamil Nadu logo"
+              width={168}
+              height={82}
+              className="h-20 w-auto transition hover:scale-105"
+            />
             <p className="mt-6 max-w-sm text-sm leading-7 text-[#1a1208]/70">
-              <span className="en">Food cart rentals for Coimbatore vendors. Expanding across Tamil Nadu.</span>
-              <span className="ta tamil-text">கோவையில் தொழில் தொடங்க வண்டி வேண்டுமா? நம்பிக்கையா பேசுங்க. தமிழ்நாடு முழுக்க விரைவில் வரோம்.</span>
+              <span className="en">
+                Food cart rentals for Coimbatore vendors. Expanding across Tamil
+                Nadu.
+              </span>
+              <span className="ta tamil-text">
+                கோவையில் தொழில் தொடங்க வண்டி வேண்டுமா? நம்பிக்கையா பேசுங்க.
+                தமிழ்நாடு முழுக்க விரைவில் வரோம்.
+              </span>
             </p>
             <div className="mt-6 flex gap-3">
               {[Instagram, Linkedin, Mail, Phone].map((Icon, index) => (
-                <span key={index} className="grid h-11 w-11 place-items-center rounded border border-primary/15 text-[#1a1208]/74">
+                <span
+                  key={index}
+                  className="grid h-11 w-11 place-items-center rounded border border-primary/15 text-[#1a1208]/74"
+                >
                   <Icon size={18} />
                 </span>
               ))}
@@ -46,11 +73,16 @@ export function Footer() {
           <div className="grid gap-9 sm:grid-cols-3">
             {Object.entries(groups).map(([title, links]) => (
               <div key={title}>
-                <h3 className="text-xs font-bold uppercase tracking-[0.18em] text-primary">{title}</h3>
+                <h3 className="text-xs font-bold uppercase tracking-[0.18em] text-primary">
+                  {title}
+                </h3>
                 <ul className="mt-5 space-y-3 text-sm text-[#1a1208]/66">
                   {links.map(([label, tamil, href]) => (
                     <li key={label}>
-                      <Link href={href} className="transition hover:text-primary">
+                      <Link
+                        href={href}
+                        className="transition hover:text-primary"
+                      >
                         <span className="en">{label}</span>
                         <span className="ta tamil-text">{tamil}</span>
                       </Link>
@@ -64,8 +96,12 @@ export function Footer() {
         <div className="mt-14 flex flex-col gap-3 border-t border-primary/15 pt-6 text-xs uppercase tracking-[0.14em] text-[#1a1208]/50 md:flex-row md:justify-between">
           <span>© 2026 Thalluvandi.in</span>
           <span>
-            <span className="en">Legal, terms, privacy and vendor policy placeholders</span>
-            <span className="ta tamil-text">விதிமுறைகள், privacy, vendor policy</span>
+            <span className="en">
+              Legal, terms, privacy and vendor policy placeholders
+            </span>
+            <span className="ta tamil-text">
+              விதிமுறைகள், privacy, vendor policy
+            </span>
           </span>
         </div>
       </div>

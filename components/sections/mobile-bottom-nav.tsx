@@ -9,7 +9,7 @@ const items = [
   ["Home", "முகப்பு", "/", Home],
   ["Explore", "வண்டிகள்", "/explore", Search],
   ["Publish", "என் வண்டி சேர்க்க", "/publish", Send],
-  ["Contact", "தொடர்பு", "/contact", Phone]
+  ["Contact", "தொடர்பு", "/contact", Phone],
 ] as const;
 
 export function MobileBottomNav() {
@@ -27,10 +27,19 @@ export function MobileBottomNav() {
         {items.map(([label, tamil, href, Icon]) => {
           const active = pathname === href;
           return (
-            <Link key={href} href={href} className={`flex flex-1 flex-col items-center justify-center gap-1 text-[10px] font-bold text-center px-1 ${active ? "text-primary" : "text-muted"}`}>
+            <Link
+              key={href}
+              href={href}
+              className={`flex flex-1 flex-col items-center justify-center gap-1 text-[10px] font-bold text-center px-1 ${active ? "text-primary" : "text-muted"}`}
+            >
               <Icon size={20} className="shrink-0" />
               <span className="en">{label}</span>
-              <span className="ta tamil-text leading-tight truncate max-w-full" title={tamil}>{tamil}</span>
+              <span
+                className="ta tamil-text leading-tight truncate max-w-full"
+                title={tamil}
+              >
+                {tamil}
+              </span>
             </Link>
           );
         })}
