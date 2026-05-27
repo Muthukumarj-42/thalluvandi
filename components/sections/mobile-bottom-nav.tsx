@@ -2,14 +2,13 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, Phone, Search, Send, UserRound } from "lucide-react";
+import { Home, Phone, Search, Send } from "lucide-react";
 import { LanguageToggle } from "@/components/sections/language-toggle";
 
 const items = [
   ["Home", "முகப்பு", "/", Home],
   ["Explore", "வண்டிகள்", "/explore", Search],
   ["Publish", "என் வண்டி சேர்க்க", "/publish", Send],
-  ["About", "பற்றி", "/about", UserRound],
   ["Contact", "தொடர்பு", "/contact", Phone]
 ] as const;
 
